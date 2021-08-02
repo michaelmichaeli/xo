@@ -3,7 +3,6 @@ import GamesIcon from '@material-ui/icons/Games';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { makeId } from "../services/utilService";
 
 const RoomList = ({ rooms, goToRoom, user, onDeleteRoom }) => {
 
@@ -11,6 +10,7 @@ const RoomList = ({ rooms, goToRoom, user, onDeleteRoom }) => {
         goToRoom(roomId)
     }
 
+    // if (!rooms || !rooms.length || !user) return 'Loading...'
     return <section className="rooms-list">
         <header>
             <div></div>
@@ -30,41 +30,38 @@ const RoomList = ({ rooms, goToRoom, user, onDeleteRoom }) => {
                 }
                 return <>
                     {/* // <div className="room-row" key={room.id}> */}
+
                     {user.uid === room.creator.uid
                         ? <button
                             // disabled={room.onlineUsers.length > 0}
                             className="trash "
-                            onClick={() => onDeleteRoom(makeId())}
-                            key={makeId()}
+                            onClick={() => onDeleteRoom(room.id)}
                         >
                             <DeleteForeverIcon />
                         </button>
-                        : <div className="trash" key={makeId()}></div>}
-
-                    <div className="creator flex" key={makeId()}>
+                        : <div className="trash"> </div>}
+                    
+                    <div className="creator flex">
                         <img src={room.creator.photoURL} alt={room.creator.photoURL} />
-                        {`${room.creator.displayName}${room.creator.uid === user.uid ? " (You)" : ""}`}
+                        {`${room.creator.displayName}${room.creator.uid===user.uid ? " (You)" : ""}`}
                     </div>
 
-                    <div className="player2 flex justify-center align-center" key={makeId()}>
+                    <div className="player2 flex justify-center align-center">
                         {room.game.player2 && <img src={room.game.player2.photoURL} alt={room.game.player2.photoURL} />}
                         {room.game.player2 ? room.game.player2.displayName : "Waiting..."}
                     </div>
 
-                    {room.createdAt && <div className="time" key={makeId()}>
+                    {room.createdAt && <div className="time">
                         {moment(room.createdAt.seconds * 1000).fromNow()}
                     </div>}
 
-                    <div className="online" key={makeId()}>
-                        {room.onlineUsers.length}
-                    </div>
+
+                    <div className="online">{room.onlineUsers.length}</div>
 
                     <button
                         className="join flex align-center justify-center"
                         onClick={() => { onEnterRoom(room.id) }}
-                        key={makeId()}
-                    >
-                        <JoinButtonText />
+                    ><JoinButtonText />
                     </button>
 
                     {/* </div> */}

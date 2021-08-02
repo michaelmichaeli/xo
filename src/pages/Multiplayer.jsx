@@ -201,22 +201,20 @@ const Multiplayer = () => {
         return <div className="multiplayer flex column align-center">
 
             <header className="flex between align-center">
-                <CurrentPlayerPreview
+                {turnUser && <CurrentPlayerPreview
                     currentPlayer={turnUser}
                     currentSymbol={turnUser.uid === creator.uid ? "X" : "O"}
                     winner={winner}
-                />
+                />}
                 <div className="middle flex column align-center justify-center">
-                    <h2>{room.creator.displayName}'s Room</h2>
-
+                    <h2>{creator.displayName}'s Room</h2>
                 </div>
 
-                {(user.uid === player1.uid || user.uid === player2.uid)
+                {(user.uid === player1.uid || (player2 && user.uid === player2.uid))
                     ? <div
                         className={`restart flex  ${winner && "won"}`}
                         onClick={() => onRestart()}>
                         <div className="symbol">
-                            {/* <img src={restart} alt="Restart" /> */}
                             <ReplayIcon />
                         </div>
                         <div className="text">
@@ -237,7 +235,7 @@ const Multiplayer = () => {
                 squares={JSON.parse(squares)}
                 handleClick={handleClick}
                 winner={winner}
-                isUserTurn={turnUser.uid === user.uid}
+                isUserTurn={turnUser?.uid === user.uid}
                 winnerUser={winnerUser}
             />
 
