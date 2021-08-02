@@ -1,0 +1,98 @@
+.multiplayer {
+	.share {
+		margin-top: 10px;
+		// width: 100%;
+		width: 80vmin;
+		// margin-top: 5px;
+
+		min-height: 44px;
+
+		border-radius: 10px;
+		padding: 0 20px;
+		backdrop-filter: blur(10px);
+		max-width: 100%;
+		-moz-box-shadow: inset 20px 20px 50px #00000050;
+		-webkit-box-shadow: inset 20px 20px 50px #00000050;
+		box-shadow: inset 20px 20px 50px #00000050;
+		
+		>svg {
+			margin-right: 5px;
+		}
+
+		// >button {
+		// 	backdrop-filter: blur(10px);
+		// 	background-color: rgba($clr1, 0.2);
+		// 	border-radius: 10px;
+		// 	padding: 10px;
+		// }
+			margin: 10px;
+		font-size: 80%;
+
+
+			// border-radius: 10px;
+			// padding: 10px;
+            // padding-bottom: 5px;
+
+			// background-color: rgba($clr1, 0.2);
+			// backdrop-filter: blur(10px);
+
+			// position: absolute;
+			// width: 100%;
+			// top: 77px;
+			// left: 50%;
+			// margin: 0 auto;
+			// transform: translateX(-50%);
+			>button {
+				margin: 0 10px;
+                // filter: grayscale(0.9);
+                // transition: 0.1s;
+				svg {
+					width: 24px;
+					height: 24px;
+				}
+                &:hover {
+                    // filter: grayscale(0);
+                }
+			}
+	}
+}
+// .multiplayer {
+// 	.share {
+// 		margin-top: 10px;
+// 		margin-bottom: 80px;
+// 		width: 80vmin;
+// 		border-radius: 10px;
+// 		// padding: 5px 10px;
+
+// 		position: relative;
+// 		>button {
+// 			backdrop-filter: blur(10px);
+// 			background-color: rgba($clr1, 0.2);
+// 			border-radius: 10px;
+// 			padding: 10px;
+// 		}
+// 		.social {
+// 			border-radius: 10px;
+// 			padding: 10px;
+//             padding-bottom: 5px;
+
+// 			background-color: rgba($clr1, 0.2);
+// 			backdrop-filter: blur(10px);
+
+// 			position: absolute;
+// 			// width: 100%;
+// 			top: 77px;
+// 			left: 50%;
+// 			// margin: 0 auto;
+// 			transform: translateX(-50%);
+// 			>button {
+// 				margin: 0 5px;
+//                 // filter: grayscale(0.7);
+//                 transition: 0.1s;
+//                 &:hover {
+//                     // filter: grayscale(0);
+//                 }
+// 			}
+// 		}
+// 	}
+// }

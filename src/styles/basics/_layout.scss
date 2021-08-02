@@ -1,0 +1,51 @@
+.main-container {
+
+    display: grid;
+
+    height: 100vh;
+
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 70px 1fr 30px;  //NavBar Main Footer
+
+    justify-items: stretch;
+    align-items: center;
+
+    @include for-mobile-layout {
+        grid-template-columns: 
+        minmax(0, 1fr)
+        minmax(auto, $mobile-breakpoint)
+        minmax(0, 1fr)
+    }
+    
+    // @include for-narrow-layout {
+    //     grid-template-columns: 
+    //     minmax(20px, 1fr)
+    //     minmax(auto, $mobile-breakpoint)
+    //     minmax(20px, 1fr)     
+    // }
+
+    // @include for-normal-layout {
+    //     grid-template-columns: 
+    //     minmax(20px, 1fr)
+    //     minmax(auto, $narrow-breakpoint)
+    //     minmax(20px, 1fr)
+    //     ;
+    // }
+
+    // @include for-wide-layout {
+    //     grid-template-columns: 
+    //     minmax(20px, 1fr)
+    //     minmax(auto, $normal-breakpoint)
+    //     minmax(20px, 1fr)
+    //     ;
+    // }
+
+    > * {
+        grid-column: 2;
+        height: 100%;
+        &.full {
+            grid-column: 1 / -1;
+        }
+    }
+
+}

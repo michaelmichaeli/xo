@@ -1,0 +1,51 @@
+.square {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	padding: 0;
+	border: 1px solid $clr5;
+	overflow: hidden;
+	z-index: 0;
+	@include aspect-ratio(1, 1);
+
+	img {
+		width: 90%;
+		height: 90%;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		filter: drop-shadow(15px 10px 10px rgba(0, 0, 0, 0.4));
+	}
+	&.win {
+		filter: grayscale(1);
+		opacity: 0.15;
+		animation: game-win 2s ease-in;
+	}
+	@keyframes game-win {
+		0% {
+			filter: grayscale(0);
+			opacity: 1;
+		}
+		70% {
+			filter: grayscale(0);
+			opacity: 1;
+		}
+		100% {
+			filter: grayscale(1);
+			opacity: 0.15;
+		}
+	}
+	&:disabled {
+		cursor: default !important;
+	}
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.15);
+	}
+	&:disabled:hover {
+		background-color: transparent;
+	}
+}

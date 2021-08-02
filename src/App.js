@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+
+import "./styles/global.scss";
+
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import AiGame from "./pages/AiGame";
+import Multiplayer from "./pages/Multiplayer";
+import About from "./pages/About";
+import Rooms from "./pages/Rooms";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App main-container">
+			<NavBar />
+			<Switch>
+				<Route component={HomePage} exact path="/" />
+				<Route component={About} exact path="/about" />
+				<Route component={AiGame} exact path="/ai" />
+				<Route component={Rooms} exact path="/rooms" />
+				<Route component={Multiplayer} exact path="/multiplayer/:roomId?" />
+			</Switch>
+			<Footer />
+		</div>
+	);
 }
-
 export default App;

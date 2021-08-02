@@ -1,0 +1,29 @@
+// Setup
+@import "setup/_variables.scss";
+@import "setup/_functions.scss";
+@import "setup/_mixins.scss";
+@import "setup/_typography.scss";
+
+// Basics
+@import "basics/_helpers.scss";
+@import "basics/_layout.scss";
+@import "basics/_base.scss";
+@import "basics/_links.scss";
+@import "basics/_buttons.scss";
+
+// Components
+@import "components/_navbar.scss";
+@import "components/_footer.scss";
+@import "components/_board.scss";
+@import "components/_square.scss";
+@import "components/_login.scss";
+@import "components/_rooms.scss";
+@import "components/_chat.scss";
+@import "components/_currentplayer.scss";
+@import "components/_socialbuttons.scss";
+
+// pages
+@import "pages/_about.scss";
+@import "pages/_home-page.scss";
+@import "pages/_ai.scss";
+@import "pages/_multiplayer.scss";
