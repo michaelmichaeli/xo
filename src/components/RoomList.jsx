@@ -51,9 +51,9 @@ const RoomList = ({ rooms, goToRoom, user, onDeleteRoom }) => {
                         {room.game.player2 ? room.game.player2.displayName : "Waiting..."}
                     </div>
 
-                    <div className="time" key={makeId()}>
+                    {room.createdAt && <div className="time" key={makeId()}>
                         {moment(room.createdAt.seconds * 1000).fromNow()}
-                    </div>
+                    </div>}
 
                     <div className="online" key={makeId()}>
                         {room.onlineUsers.length}
