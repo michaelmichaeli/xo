@@ -1,18 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 $font: "Lato";
 .chat {
-	z-index: 9;
+	z-index: 100;
 	font-family: $font;
 	border-radius: 10px 10px 0 0;
-	//238X570
-	min-width: 288px;
-	max-width: 100%;
-	// max-width: 288px;
-	width: 80vmin;
-
-	// min-height: 330px;
-	max-height: 330px;
-	// height: 330px;
+	width: 338px;
+	max-width: 338px;
+	// height: 455px;
+	// max-height: 455px;
 
 	position: fixed;
 	bottom: 0px;
@@ -21,11 +16,20 @@ $font: "Lato";
 
 	overflow: hidden;
 
-	box-shadow: 0 0 10px rgba($clr1, 0.5);
+	// box-shadow: 0 0 10px rgba($clr1, 0.5);
+	background-color: $clr4;
+
+
+	@include for-wide-layout {
+		right: 80px;
+		transform: translateX(0);
+		// main {
+		// 	min-height: 360px;
+		// }
+	}
 	.header {
 		cursor: pointer;
 		color: $clr1;
-		// margin-bottom: 10px;
 		background-color: $clr5;
 		width: 100%;
 		height: 32px;
@@ -45,13 +49,14 @@ $font: "Lato";
 		}
 	}
 	main {
+		max-height: 355px;
+		min-height: 355px;
 		transition: 0.2s;
 
 		justify-content: end;
 		// font-size: rem(12px);
 		background-color: $clr4;
-		// backdrop-filter: blur(10px); 
-
+		// backdrop-filter: blur(10px);
 
 		// -moz-box-shadow: inset 20px 20px 50px #00000078;
 		// -webkit-box-shadow: inset 20px 20px 50px #00000078;
@@ -60,12 +65,11 @@ $font: "Lato";
 		overflow-y: scroll;
 		overflow-x: hidden;
 		width: 100%;
-		min-height: 200px;
 		padding: 10px;
 		margin: auto 0;
 		.no-messages {
 			margin: auto;
-			opacity: 0.3;
+			opacity: 0.5;
 		}
 		.wrap {
 			width: 100%;
@@ -141,18 +145,20 @@ $font: "Lato";
 		width: 100%;
 		border: none;
 		margin: 0;
-		background-color: $clr5;
+		background-color: $clr4;
 		display: flex;
 		align-items: center;
+		margin-bottom: 10px;
 		input {
 			width: 100%;
 			padding: 10px;
-			background-color: $clr5;
-			// border-radius: 100px;
+			// background-color: $clr5;
+			border-radius: 100px;
 			border-width: 0;
 			// font-size: large;
 			// margin: 10px 0;
 			// color: $clr6;
+			margin: 0 10px 0 10px;
 		}
 		input:focus {
 			outline: none !important;
@@ -160,19 +166,10 @@ $font: "Lato";
 			box-shadow: none !important;
 		}
 		button {
-			color: $clr1;
-			padding: 5px;
-		}
-	}
-	@include for-wide-layout {
-		min-width: 338px;
-		max-width: 338px;
-		max-height: 455px;
-		bottom: 0;
-		left: 80px;
-		transform: translateX(0);
-		main {
-			min-height: 360px;
+			color: $clr6;
+			// padding: 10px;
+			margin-right: 10px;
+			background-color: $clr4;
 		}
 	}
 }

@@ -7,10 +7,12 @@
 		// width: 50%;
 		// height: 100%;
 		backdrop-filter: blur(10px);
+		// background-color: $clr4;
+
 		margin: 10px;
 		background-color: rgba($clr1, 0.4);
 		padding: 20px;
-		border-radius: 30px;
+		border-radius: 10px;
 		h2 {
 			line-height: 0.8;
 			margin: 15px;
@@ -23,8 +25,8 @@
 
 	header {
 		flex-wrap: wrap;
-		width: 100%;
-		width: 80vmin;
+		// width: 100%;
+		width: $width;
 		max-width: 100%;
 		min-width: 288px;
 		.middle {
@@ -42,9 +44,9 @@
 		.restart {
 			justify-self: flex-end;
 			align-self: flex-end;
-			margin-top: 5px;
+			// margin-top: 5px;
 			margin-left: auto;
-			filter: grayscale(1);
+			// filter: grayscale(1);
 			width: 120px;
 			height: 80px;
 			min-width: 120px;
@@ -52,12 +54,12 @@
 			border-radius: 10px;
 			padding: 10px;
 			backdrop-filter: blur(10px);
-
-			-moz-box-shadow: inset 20px 20px 50px #00000050;
-			-webkit-box-shadow: inset 20px 20px 50px #00000050;
-			box-shadow: inset 20px 20px 50px #00000050;
+			background-color: rgba($clr4, 0.5);
+			// -moz-box-shadow: inset 20px 20px 50px #00000050;
+			// -webkit-box-shadow: inset 20px 20px 50px #00000050;
+			// box-shadow: inset 20px 20px 50px #00000050;
 			&.won {
-				box-shadow: inset 20px 20px 50px #00000078;
+				// box-shadow: inset 20px 20px 50px #00000078;
 				filter: grayscale(0);
 				cursor: pointer;
 				.text {
@@ -85,7 +87,7 @@
 				height: 100%;
 				width: 50%;
 				p {
-					color: #3fc0dd;
+					// color: #3fc0dd;
 					padding: 0;
 					margin: 0;
 					cursor: default;
@@ -101,18 +103,19 @@
 		}
 	}
 	section.online-players {
-		// width: 100%;
-		width: 80vmin;
+		width: $width;
+		min-width: 288px;
 		// margin-top: 5px;
 		font-size: 80%;
 
 		border-radius: 10px;
-		padding: 0 20px;
+		padding: 5px;
 		backdrop-filter: blur(10px);
-		max-width: 100%;
-		-moz-box-shadow: inset 20px 20px 50px #00000050;
-		-webkit-box-shadow: inset 20px 20px 50px #00000050;
-		box-shadow: inset 20px 20px 50px #00000050;
+		background-color: rgba($clr4, 0.5);
+		// max-width: 100%;
+		// -moz-box-shadow: inset 20px 20px 50px #00000050;
+		// -webkit-box-shadow: inset 20px 20px 50px #00000050;
+		// box-shadow: inset 20px 20px 50px #00000050;
 		// min-width: 288px;
 		// p {
 		// 	margin-right: 10px;
@@ -120,11 +123,11 @@
 		// .player:not(:last-child) {
 		// 	margin-right: 10px;
 		// }
-		>svg {
-			margin-right: 5px;
+		> svg {
+			margin: 5px;
 		}
 		.player {
-			margin: 10px;
+			margin: 5px;
 			img {
 				width: 24px;
 				border-radius: 50%;
@@ -134,19 +137,23 @@
 	}
 
 	section.waiting {
+		z-index: 100;
+		// position: absolute;
+		// top: 34vmin;
 		font-size: 80%;
-		margin-top: 10px;
-		width: 80vmin;
-		height: 36px;
+		margin: 10px;
+		width: $width;
+		min-height: 36px;
 		border-radius: 10px;
 		padding: 10px;
+		min-width: 288px;
 		backdrop-filter: blur(10px);
-		max-width: 100%;
-		-moz-box-shadow: inset 20px 20px 50px #00000050;
-		-webkit-box-shadow: inset 20px 20px 50px #00000050;
-		box-shadow: inset 20px 20px 50px #00000050;
+		background-color: rgba($clr4, 0.5);
+		// -moz-box-shadow: inset 20px 20px 50px #00000050;
+		// -webkit-box-shadow: inset 20px 20px 50px #00000050;
+		// box-shadow: inset 20px 20px 50px #00000050;
 		p {
-			max-width: 100%;
+			max-width: $width;
 		}
 	}
 }

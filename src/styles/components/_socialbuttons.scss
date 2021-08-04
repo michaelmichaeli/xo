@@ -2,21 +2,25 @@
 	.share {
 		margin-top: 10px;
 		// width: 100%;
-		width: 80vmin;
+		width: $width;
 		// margin-top: 5px;
 
 		min-height: 44px;
 
 		border-radius: 10px;
-		padding: 0 20px;
+		padding: 5px;
 		backdrop-filter: blur(10px);
+		background-color: rgba($clr4, 0.5);
+
 		max-width: 100%;
-		-moz-box-shadow: inset 20px 20px 50px #00000050;
-		-webkit-box-shadow: inset 20px 20px 50px #00000050;
-		box-shadow: inset 20px 20px 50px #00000050;
+		min-width: 288px;
+
+		// -moz-box-shadow: inset 20px 20px 50px #00000050;
+		// -webkit-box-shadow: inset 20px 20px 50px #00000050;
+		// box-shadow: inset 20px 20px 50px #00000050;
 		
 		>svg {
-			margin-right: 5px;
+			margin: 5px;
 		}
 
 		// >button {
@@ -25,7 +29,7 @@
 		// 	border-radius: 10px;
 		// 	padding: 10px;
 		// }
-			margin: 10px;
+			// margin: 10px;
 		font-size: 80%;
 
 
@@ -43,7 +47,7 @@
 			// margin: 0 auto;
 			// transform: translateX(-50%);
 			>button {
-				margin: 0 10px;
+				margin: 0 5px;
                 // filter: grayscale(0.9);
                 // transition: 0.1s;
 				svg {
@@ -60,7 +64,7 @@
 // 	.share {
 // 		margin-top: 10px;
 // 		margin-bottom: 80px;
-// 		width: 80vmin;
+// 		width: $width;
 // 		border-radius: 10px;
 // 		// padding: 5px 10px;
 

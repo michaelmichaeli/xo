@@ -1,65 +1,84 @@
 // Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
+.fs12 {
+	font-size: rem(12px);
+}
+.fs14 {
+	font-size: rem(14px);
+}
+.fs18 {
+	font-size: rem(18px);
+}
+.fs20 {
+	font-size: rem(20px);
+}
+.fs24 {
+	font-size: rem(24px);
+}
+.fs28 {
+	font-size: rem(28px);
+}
+.fs30 {
+	font-size: rem(30px);
+}
 
 // flex helpers
 .flex {
-    display: flex;
+	display: flex;
 
-    > *.full {
-        flex: 1;
-    }
-    &.column {
-        flex-direction: column;
-    }
-    &.justify-center {
-        justify-content: center;
-    }
-    &.align-center {
-        align-items: center;
-    }
-    &.justify-left {
-        justify-content: left;
-    }
-    &.justify-right {
-        justify-content: right;
-    }
-    &.between {
-        justify-content: space-between;
-    }
-    &.around {
-        justify-content: space-around;
-    }
-    &.wrap {
-        flex-wrap: wrap;
-    }
+	> *.full {
+		flex: 1;
+	}
+	&.column {
+		flex-direction: column;
+	}
+	&.justify-center {
+		justify-content: center;
+	}
+	&.align-center {
+		align-items: center;
+	}
+	&.justify-left {
+		justify-content: left;
+	}
+	&.justify-right {
+		justify-content: right;
+	}
+	&.between {
+		justify-content: space-between;
+	}
+	&.around {
+		justify-content: space-around;
+	}
+	&.wrap {
+		flex-wrap: wrap;
+	}
 }
 
 // Media helpers
 .square-ratio {
-    @include aspect-ratio(1, 1);
+	@include aspect-ratio(1, 1);
 }
 .video-ratio {
-    @include aspect-ratio(16, 9);
+	@include aspect-ratio(16, 9);
 }
 .portrait-ratio {
-    @include aspect-ratio(9, 16);
+	@include aspect-ratio(9, 16);
 }
 
 // List
 .clean-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 }
 
 //Custom
 .hide {
-    transition: 0.2s;
-     display: none !important
+	transition: 0.2s;
+	display: none !important;
+}
+
+.fade {
+    stransition: 0.2s;
+    opacity: 0;
 }

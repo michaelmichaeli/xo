@@ -1,5 +1,5 @@
 .current-player-preview {
-	margin-right: 10px;
+	// margin-right: 10px;
 	width: 160px;
 	height: 80px;
 	min-width: 160px;
@@ -9,12 +9,12 @@
 	// border: 2px solid #eaf1f9;
 	border-radius: 10px;
 	padding: 10px;
-	// background-color: $clr4;
+	background-color: rgba($clr4, 0.5);
 	backdrop-filter: blur(10px); 
 
-	-moz-box-shadow: inset 20px 20px 50px #00000050;
-	-webkit-box-shadow: inset 20px 20px 50px #00000050;
-	box-shadow: inset 20px 20px 50px #00000050;
+	// -moz-box-shadow: inset 20px 20px 50px #00000050;
+	// -webkit-box-shadow: inset 20px 20px 50px #00000050;
+	// box-shadow: inset 20px 20px 50px #00000050;
 	&.won {
 		filter: grayscale(1);
 		// border: 2px solid #eaf1f960;
