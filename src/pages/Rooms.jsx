@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import RoomList from '../components/RoomList'
+import history from '../history'
 
 import firebase from 'firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { db, auth } from "../services/firebaseService";
 import Login from '../components/Login';
 
-import AddBoxIcon from '@material-ui/icons/AddBox';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Rooms = () => {
@@ -77,8 +78,9 @@ const Rooms = () => {
     }
 
     const goToRoom = (roomId) => {
-        const win = window.open("/multiplayer/" + roomId, "_blank");
-        win.focus();
+        // const win = window.open("/multiplayer/" + roomId, "_blank");
+        // win.focus();
+        history.push(`/multiplayer/${roomId}`)
     }
 
     if (isUserLoading) return <div className="loader-spinner flex column align-center justify-center">
@@ -87,28 +89,28 @@ const Rooms = () => {
 
     if (!user && !isUserLoading) return <Login />
 
-    return <section className="multiplayer-section home-page flex column align-center justify-center">
+    return <section className="rooms-container home-page flex column align-center justify-center">
         <img className="user-photo" src={user.photoURL} alt={user.photoURL} />
         <h2 className="user-name">{user.displayName}</h2>
 
         <div className="rooms flex column justify-center align-center between">
-            {
-                !isRoomsLoading
-                    ?
-                    // rooms && rooms.length &&
-                    <RoomList
-                        user={user}
-                        goToRoom={goToRoom}
-                        rooms={rooms}
-                        onDeleteRoom={onDeleteRoom}
-                    />
-                    : <div className="loader-spinner flex column align-center justify-center">
-                        <CircularProgress color="inherit" />
-                    </div>
-            }
+            {!isRoomsLoading && rooms.length > 0 &&
+                <RoomList
+                    user={user}
+                    goToRoom={goToRoom}
+                    localRooms={rooms}
+                    onDeleteRoom={onDeleteRoom}
+                />}
+            {!isRoomsLoading && (!rooms || rooms.length === 0) && <div className="no-rooms">
+                <p>Looks like all the game rooms expired.</p>
+                <p>Create a new room and invite your friends.</p>
+            </div>}
+            {isRoomsLoading && <div className="loader-spinner flex column align-center justify-center">
+                <CircularProgress color="inherit" />
+            </div>}
             <button
                 onClick={onCreatNewRoom}
-            ><AddBoxIcon />Create New Room</button>
+            ><GroupAddIcon />Create New Room</button>
         </div>
     </section>
 }
