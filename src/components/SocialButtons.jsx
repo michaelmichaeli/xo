@@ -23,7 +23,7 @@ export const SocialButtons = ({roomId}) => {
             <ShareIcon /> <p>Share</p>
         </button> */}
         <ShareIcon />
-        <p>Share:</p>
+        <p>Invite Your Friends:</p>
         {/* {shareMenuOpen && */}
             {/* <div className="social flex justify-center align-center "> */}
 
