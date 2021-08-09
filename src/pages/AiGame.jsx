@@ -43,6 +43,7 @@ const AiGame = () => {
             squares={squares}
             handleClick={handleClick}
             isUserTurn={!isLoading}
+            isAiThinking={isLoading}
         />
         <button className={`restart  ${winner && "won"}`}
             onClick={onRestart}>

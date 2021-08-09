@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Square from "./Square";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 import x from "../assets/img/x.svg";
 import o from "../assets/img/o.svg";
 
 
-const Board = ({ squares, handleClick, winner, isUserTurn, winnerUser = null }) => {
+const Board = ({ squares, handleClick, winner, isUserTurn, winnerUser = null, isAiThinking = null }) => {
     const [winUser, setWinUser] = useState(null)
     useEffect(() => {
         const fetchWinnerUser = async () => {
             winnerUser && setWinUser(await winnerUser())
         }
         fetchWinnerUser()
-    },[winnerUser])
+    }, [winnerUser])
 
     const WinnerAnnouncement = () => {
         return <div className="declaration">
@@ -27,6 +29,13 @@ const Board = ({ squares, handleClick, winner, isUserTurn, winnerUser = null }) 
             )}
         </div>
     }
+
+    const YourTurnAnnouncement = () => {
+        return <div className="your-turn">
+            <h1>Your Turn</h1>
+        </div>
+    }
+
     return <div className="board-wrapper">
         <div className={`board ${winner && "win"}`}>
             {squares.map((row, i) => {
@@ -43,6 +52,8 @@ const Board = ({ squares, handleClick, winner, isUserTurn, winnerUser = null }) 
             })}
         </div>
         <WinnerAnnouncement />
+        {isUserTurn && !winner && <YourTurnAnnouncement />}
+        {isAiThinking && <div className="loading"><CircularProgress size="200px" color="inherit"/></div>}
     </div>
 };
 
