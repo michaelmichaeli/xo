@@ -83,9 +83,9 @@ a {
 	text-decoration: none;
 }
 
-button {
+a, button {
+	color: $clr6;
 	background: none;
-	color: inherit;
 	border: none;
 	padding: 0;
 	font: inherit;
@@ -93,6 +93,8 @@ button {
 	outline: inherit;
 	cursor: pointer;
 	z-index: 1;
+	text-transform: uppercase;
+	// white-space: nowrap;
 }
 
 .loader-spinner {

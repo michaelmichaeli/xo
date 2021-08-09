@@ -2,12 +2,12 @@
 	width: 100%;
 	background-image: linear-gradient(rgba($clr4, 1), transparent);
 	.nav-bar {
+		white-space: nowrap;
 		z-index: 99;
 		width: 68vw;
 		max-width: 100%;
 		margin: 0 auto;
-		// margin-bottom: 10px;
-		a.home {
+		button.logo {
 			text-decoration: none;
 			display: flex;
 			align-items: center;
@@ -18,10 +18,7 @@
 			padding: 8px;
 			margin: 10px 10px 10px 0;
 			min-width: 170px;
-			// &:hover {
-			// 	background-color: rgba($clr6, 0.3);
-			// }
-
+			text-transform: inherit;
 			img {
 				width: 30px;
 				margin-right: 5px;
@@ -31,64 +28,20 @@
 				margin: 0;
 			}
 		}
-		ul {
+		> ul {
 			margin: 0 0 0 auto;
-			// position: relative;
 			font-size: 80%;
-			// min-width: 880px;
-			li {
-				margin-left: 5px;
-				height: 50px;
-				border-radius: 10px;
-				padding: 8px;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				transition: 0.2s;
-
+			> li {
+				margin: 5px;
 				&:nth-child(1) {
 					display: none;
-				}
-				& > * {
-					margin: auto;
-					display: flex;
-					justify-content: center;
-					align-items: center;
 				}
 				& svg {
 					margin-right: 5px;
 				}
-				&.login {
-					position: relative;
-					transition: 0.2s;
-					.avatar {
-						cursor: pointer;
-						img {
-							border-radius: 50%;
-							width: 24px;
-							height: 24px;
-							margin-right: 5px;
-						}
-					}
-					.dropdown {
-						transition: 0.2s;
-						// border-radius: 5px;
-						border-radius: 10px;
-						position: absolute;
-						// border: 2px solid $clr6;
-						background-color: rgba($clr6, 0.3);
-						// transform: translate(-80%, 20%);
-						top: 52px;
-						right: 0px;
-						padding: 10px;
-						// width: 200px;
-						// margin: 10px;
-						z-index: 1000;
-					}
+				> button {
+					color: $clr6;
 				}
-				// &:hover {
-				// 	background-color: rgba($clr6, 0.3);
-				// }
 			}
 			.nav-icon {
 				display: none;
@@ -106,59 +59,28 @@
 
 	@include for-mobile-layout-width {
 		.nav-bar {
-			ul {
+			> ul {
 				transform: translateX(110%);
 				transition: 0.2s;
 				position: fixed;
 				flex-direction: column;
+				justify-content: flex-start;
 				right: 0;
 				top: 0;
-				background-color: $clr3;
+				background-color: $clr4;
 				height: 100%;
 				align-items: flex-start;
 				z-index: 998;
 				padding-top: 100px;
 				width: 230px;
-
-				li:not(:last-child) {
-					margin-right: unset;
-				}
-
 				&.menu-open {
 					transform: translateX(0%);
 				}
-
-				li {
-					width: 80%;
-					margin-bottom: 20px;
-					padding: 0px 20px;
-					align-items: flex-start;
-
+				> li {
+					width: 100%;
 					&:nth-child(1) {
-						display: flex;
+						display: block;
 					}
-					&.login {
-						.dropdown {
-							top: 60px;
-							right: 50%;
-							transform: translateX(50%);
-							img {
-								width: 150px;
-							}
-						}
-					}
-				}
-
-				a {
-					transition: 0.2s;
-					color: $clr6;
-
-					&::after {
-						all: unset;
-					}
-					// &:hover {
-						// color: $clr2;
-					// }
 				}
 			}
 
@@ -239,6 +161,25 @@
 						left: 50%;
 					}
 				}
+			}
+		}
+	}
+}
+.MuiPaper-root {
+	ul {
+		background: $clr5;
+		text-transform: uppercase;
+		white-space: nowrap;
+		font-size: 50%;
+		color: $clr1;
+		padding: 5px;
+		li {
+			white-space: nowrap;
+			
+			a {
+				color: $clr1;
+				font-size: 80%;
+
 			}
 		}
 	}
