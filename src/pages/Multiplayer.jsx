@@ -64,10 +64,10 @@ const Multiplayer = () => {
     // For updating 'Waiting for Player...1 + 2'
     useEffect(() => {
         if (room && room.onlineUsers.length) {
-            const { player1, player2 } = room.game
-            setWaitingForPlayer1(room.onlineUsers
+            const { player1, player2, turnUser } = room.game
+            setWaitingForPlayer1(player1.uid === turnUser.uid && room.onlineUsers
                 .findIndex(onlineUser => onlineUser.uid === player1.uid) === -1)
-            player2 && setWaitingForPlayer2(room.onlineUsers
+            player2 && setWaitingForPlayer2(player2.uid === turnUser.uid && room.onlineUsers
                 .findIndex(onlineUser => onlineUser.uid === player2.uid) === -1)
         }
     }, [room])
@@ -181,6 +181,22 @@ const Multiplayer = () => {
         return null;
     }
 
+    const WaitingModal = () => {
+        const { player1, player2 } = room.game
+        if (waitingForPlayer1 && !waitingForPlayer2) return <section className={`waiting flex column align-center`}>
+            <CircularProgress color="inherit" />
+            <p>Waiting for Player 1 ({player1.displayName}) to come back</p>
+        </section>
+        if (waitingForPlayer2 && !waitingForPlayer1) return <section className={`waiting flex column align-center`}>
+            <CircularProgress color="inherit" />
+            <p>Waiting for Player 2 {player2 ? `(${player2.displayName}) to come back` : " to join the room"}</p>
+        </section>
+        // if (waitingForPlayer2 && waitingForPlayer1) return <section className={`waiting flex column align-center`}>
+        //     <CircularProgress color="inherit" />
+        //     <p>Waiting for both Player 1 ({player1.displayName}) and Player 2 ({player2.displayName}) to come back</p>
+        // </section>
+    }
+
     if (isRoomLoading || isUserLoading) return <div className="loader-spinner flex column align-center justify-center">
         <CircularProgress size="100px" color="inherit" />
     </div>
@@ -189,7 +205,7 @@ const Multiplayer = () => {
         <div className="no-room flex column align-center justify-center">
             <h2>Oops... Something went wrong</h2>
             <p>Probably an address typo or this room doesn't exist anymore.</p>
-            <p>You can create a new game room from the<a href="/">home-page.</a></p>
+            <p>You can create a new game room from the<a href="/rooms">Rooms-page.</a></p>
         </div>
     </div>
 
@@ -211,25 +227,19 @@ const Multiplayer = () => {
                 </div>
 
                 {(user.uid === player1.uid || (player2 && user.uid === player2.uid))
-                    ? <div
-                        className={`restart flex  ${winner && "won"}`}
+                    ? <div className={`restart flex  ${winner && "won"}`}
                         onClick={() => onRestart()}>
-                        <div className="symbol">
-                            <ReplayIcon />
-                        </div>
                         <div className="text">
                             <p>Restart</p>
+                        </div>
+                        <div className="symbol">
+                            <ReplayIcon />
                         </div>
                     </div>
                     : <div className="restart-dummy"></div>
                 }
             </header>
 
-            <section className="waiting flex column align-center">
-                {waitingForPlayer1 && !waitingForPlayer2 && <p>Waiting for Player 1 ({player1.displayName}) to come back</p>}
-                {waitingForPlayer2 && !waitingForPlayer1 && <p>Waiting for Player 2 {player2 ? `(${player2?.displayName}) to come back` : " to join the room"}</p>}
-                {waitingForPlayer2 && waitingForPlayer1 && <p>Waiting for both Player 1 ({player1.displayName}) and Player 2 ({player2?.displayName}) to come back</p>}
-            </section>
 
             <Board
                 squares={JSON.parse(squares)}
@@ -239,9 +249,17 @@ const Multiplayer = () => {
                 winnerUser={winnerUser}
             />
 
+            {(waitingForPlayer1 || waitingForPlayer2) && <WaitingModal />}
+            {/* <section className={`waiting flex column align-center`}>
+                    {(waitingForPlayer1 || waitingForPlayer2) && <CircularProgress color="inherit" />}
+                    {waitingForPlayer1 && !waitingForPlayer2 && <p>Waiting for Player 1 ({player1.displayName}) to come back</p>}
+                    {waitingForPlayer2 && !waitingForPlayer1 && <p>Waiting for Player 2 {player2 ? `(${player2?.displayName}) to come back` : " to join the room"}</p>}
+                    {waitingForPlayer2 && waitingForPlayer1 && <p>Waiting for both Player 1 ({player1.displayName}) and Player 2 ({player2?.displayName}) to come back</p>}
+                </section> */}
+            
             <section className="online-players flex align-center wrap">
                 <PublicIcon />
-                <p>Online:</p>
+                <p>Online Right Now:</p>
                 {onlineUsers.map(onlineUser => <div key={onlineUser.uid} className="player flex justify-center align-center">
                     <img src={onlineUser.photoURL} alt={onlineUser.photoURL} />
                     <p>{onlineUser.displayName[0]}</p>
