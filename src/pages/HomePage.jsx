@@ -12,8 +12,8 @@ const HomePage = () => {
             <p>Play Against Ai or with Friends In Realtime Multiplayer rooms</p>
 
             <section className="menu flex column">
-                <a href="/ai"><SportsEsportsIcon /> Play Against Ai</a>
-                <a href="/rooms"><GroupIcon /> Play With Friends</a>
+                <a href="#/ai"><SportsEsportsIcon /> Play Against Ai</a>
+                <a href="#/rooms"><GroupIcon /> Play With Friends</a>
             </section>
         </main>
 

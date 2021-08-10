@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import history from "../history.js";
+// import history from "../history.js";
+
 
 import logo from "../assets/img/logo.svg";
 
@@ -18,8 +19,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../services/firebaseService'
 import Notifications from "./Notifications";
+import { useHistory } from "react-router-dom";
 
 const NavBar = () => {
+    let history = useHistory();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [notificationsOpen, setNotificationsOpen] = useState(false)
@@ -109,14 +112,17 @@ const NavBar = () => {
             </li>
             <li className="user">
                 {!user
-                    ? <Button>
+                    ? <Button onClick={() => { 
+                        setIsDrawerOpen(false)
+                        history.push('/rooms')
+                    }}>
                         <AccountCircleIcon />Sign In
                     </Button>
                     : <UserMenu />
                 }
             </li>
             <li className="notifications">
-                {user && <Notifications user={user} />}
+                {user && <Notifications user={user} setIsDrawerOpen={setIsDrawerOpen} />}
             </li>
 
         </ul>

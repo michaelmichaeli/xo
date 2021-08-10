@@ -4,8 +4,11 @@ import { db } from "../services/firebaseService";
 import Menu from '@material-ui/core/Menu';
 import Fade from '@material-ui/core/Fade';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { useHistory } from "react-router-dom";
 
-const Notifications = ({ user }) => {
+
+const Notifications = ({ user, setIsDrawerOpen }) => {
+    let history = useHistory();
 
     const [rooms, setRooms] = useState([])
     const roomsRef = db.collection('rooms/')
@@ -24,7 +27,7 @@ const Notifications = ({ user }) => {
     const [roomsToNotify, setRoomsToNotify] = useState([])
     useEffect(() => {
         const roomsToUpdate = []
-        rooms && rooms.map(room => {
+        rooms && rooms.forEach(room => {
             if (room.game.turnUser.uid === user.uid && room.game.player2) {
                 roomsToUpdate.push(room)
             }
@@ -67,12 +70,7 @@ const Notifications = ({ user }) => {
             getContentAnchorEl={null}
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-        // PaperProps={{
-        //     style: {
-        //       top: '50%',
-        //       transform: 'translateX(-30%) translateY(90%)',
-        //     }
-        //   }}
+        
         >
             {!roomsToNotify.length ? "No New Notifications" : ""}
             {roomsToNotify.length ? "It's Your Turn Against" : ""}
@@ -82,7 +80,16 @@ const Notifications = ({ user }) => {
                 return <div key={room.id}><Divider variant="middle" />
                     <MenuItem onClick={handleClose} className="menu-item">
                         <Avatar src={opponent.photoURL} alt={opponent.photoURL} />
-                        <a href={`/multiplayer/${room.id}`}>{opponent.displayName}</a>
+                        <Button
+                            onClick={() => {
+                                setIsDrawerOpen(false)
+                                history.push(`/multiplayer/${room.id}`)
+                                history.go();
+                            }}
+                        >
+                            {opponent.displayName}
+                        </Button>
+                        {/* <a href={`#/multiplayer/${room.id}`}>{opponent.displayName}</a> */}
                     </MenuItem></div>
             })}
         </Menu>
