@@ -12,21 +12,16 @@ import {
     EmailIcon,
 } from "react-share";
 
-export const SocialButtons = ({roomId}) => {
-    // const [shareMenuOpen, setShareMenuOpen] = useState(false)
+export const SocialButtons = ({ roomId }) => {
+
     const shareLink = `http://localhost:3000/multiplayer/${roomId}`
     const title = 'Join my game of Tic Tac Toe'
-    return <div className="share flex align-center wrap">
-        {/* <button
-            onClick={() => setShareMenuOpen(!shareMenuOpen)}
-        >
-            <ShareIcon /> <p>Share</p>
-        </button> */}
-        <ShareIcon />
-        <p>Invite Your Friends:</p>
-        {/* {shareMenuOpen && */}
-            {/* <div className="social flex justify-center align-center "> */}
-
+    return <div className="share flex column align-center">
+        <div className="title flex align-center">
+            <ShareIcon />
+            <p>Invite Your Friends</p>
+        </div>
+        <div className="content  flex align-center wrap">
             <FacebookShareButton
                 url={shareLink}
                 quote={title}
@@ -73,13 +68,6 @@ export const SocialButtons = ({roomId}) => {
             >
                 <EmailIcon size={"2rem"} round />
             </EmailShareButton>
-
-            {/* <a href=""><LinkIcon /></a>
-            <a href=""><WhatsAppIcon /></a>
-            <a href=""><FacebookIcon /></a>
-            <a href=""><TwitterIcon /></a>
-            <a href="mailto:"><MailOutlineIcon /></a> */}
-        {/* </div> */}
-        {/* } */}
+        </div>
     </div>
 }

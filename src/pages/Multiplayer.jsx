@@ -205,7 +205,7 @@ const Multiplayer = () => {
         <div className="no-room flex column align-center justify-center">
             <h2>Oops... Something went wrong</h2>
             <p>Probably an address typo or this room doesn't exist anymore.</p>
-            <p>You can create a new game room from the<a href="/rooms">Rooms-page.</a></p>
+            <p>You can create a new game room from the<a href="#/rooms">Rooms-page.</a></p>
         </div>
     </div>
 
@@ -256,17 +256,23 @@ const Multiplayer = () => {
                     {waitingForPlayer2 && !waitingForPlayer1 && <p>Waiting for Player 2 {player2 ? `(${player2?.displayName}) to come back` : " to join the room"}</p>}
                     {waitingForPlayer2 && waitingForPlayer1 && <p>Waiting for both Player 1 ({player1.displayName}) and Player 2 ({player2?.displayName}) to come back</p>}
                 </section> */}
-            
-            <section className="online-players flex align-center wrap">
-                <PublicIcon />
-                <p>Online Right Now:</p>
-                {onlineUsers.map(onlineUser => <div key={onlineUser.uid} className="player flex justify-center align-center">
-                    <img src={onlineUser.photoURL} alt={onlineUser.photoURL} />
-                    <p>{onlineUser.displayName[0]}</p>
-                </div>)}
-            </section>
 
-            <SocialButtons roomId={roomId} />
+            <div className="bottom flex wrap justify-center">
+                <section className="online-players flex column align-center">
+                    <div className="title flex align-center">
+                        <PublicIcon />
+                        <p>Online Right Now</p>
+                    </div>
+                    <div className="content flex align-center wrap">
+                        {onlineUsers.map(onlineUser => <div key={onlineUser.uid} className="player flex justify-center align-center">
+                            <img src={onlineUser.photoURL} alt={onlineUser.photoURL} />
+                            <p>{onlineUser.displayName[0]}</p>
+                        </div>)}
+                    </div>
+                </section>
+
+                <SocialButtons roomId={roomId} />
+            </div>
 
             <Chat messages={messages} roomId={roomId} user={user} />
 

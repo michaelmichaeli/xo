@@ -1,3 +1,11 @@
+.screen {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 998;
+}
 .rooms-container {
 	img.user-photo {
 		margin-top: 40px;
@@ -27,8 +35,8 @@
 		max-width: 880px;
 		min-height: 200px;
 		min-width: 330px;
-		backdrop-filter: blur(5px);
 		margin: 10px 0 20px 0;
+		backdrop-filter: blur(5px);
 		background-color: rgba($clr1, 0.4);
 		// padding: 20px 20px 20px 40px;
 		border-radius: 10px;
@@ -69,6 +77,26 @@
 		}
 		section.rooms-list {
 			width: 100%;
+			position: relative;
+
+			.delete-modal {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 999;
+				padding: 30px;
+				border-radius: 10px;
+				background-color: rgba($clr1, 0.8);
+				width: 80%;
+				max-width: 550px;
+				p {
+					margin: 10px;
+				}
+				button {
+					color: $clr6;
+				}
+			}
 			header {
 				text-transform: uppercase;
 
