@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import App from "./App";
 
-import history from "./history.js";
+// import history from "./history.js";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Router history={history}>
+		<Router basename="/xo/" history={history}>
 				<App />
 		</Router>
 	</React.StrictMode>,
