@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import RoomList from '../components/RoomList'
-import history from '../history'
+// import history from '../history'
+
 
 import firebase from 'firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -9,8 +10,10 @@ import Login from '../components/Login';
 
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useHistory } from 'react-router-dom';
 
 const Rooms = () => {
+    let history = useHistory();
 
     const [isRoomsLoading, setIsRoomsloading] = useState(true)
     const [isUserLoading, setIsUserLoading] = useState(true)
@@ -74,6 +77,7 @@ const Rooms = () => {
     }
 
     const onDeleteRoom = (roomId) => {
+        console.log(roomId);
         roomsRef.doc(roomId).delete()
     }
 

@@ -3,9 +3,14 @@ import GamesIcon from '@material-ui/icons/Games';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import { useState } from "react";
 import { useEffect } from "react";
-import ConfirmDeleteModal from './ConfirmDeleteModal'
+// import ConfirmDeleteModal from './ConfirmDeleteModal'
 
 const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
 
@@ -52,15 +57,8 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
         }
         setRooms(roomsCopy)
     }
-    
-    const [openDeleteModal, setOpenDeleteModal] = useState(false);
-    const handleDeleteModalOpen = () => {
-        setOpenDeleteModal(true);
-    };
-    const handleDeleteModalClose = (yes, roomId) => {
-        setOpenDeleteModal(false);
-        if (yes) onDeleteRoom(roomId)
-    };
+
+    const [deleteRoomId, setDeleteRoomId] = useState(null);
 
     const JoinButtonInnerText = ({ room, user }) => {
         const { player1, player2, turnUser } = room.game
@@ -72,20 +70,36 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
         return <><VisibilityIcon /><p>Watch</p></>
     }
 
-    // if (!rooms || !rooms.length || !user) return 'Loading...'
-    return <section className="rooms-list">
-        <header>
-            {/* <div></div> */}
-            <div className="creator" onClick={() => sortRoomsBycreatorName()}>Player</div>
-            <div className="player2" onClick={() => sortRoomsByPlayer2Name()}>Opponent</div>
-            <div className="time" onClick={() => sortRoomsByTime()}>Created</div>
-            {/* <div>Manage</div> */}
-            <div>Enter</div>
-        </header>
-        <main>
-            {rooms.map(room => {
-                return <>
-                    <div className="room-row" key={room.id}>
+    const ConfirmDeleteModal = () => {
+        return (
+            <div className="delete-modal">
+                <p>Are your sure you want to remove this room permanently?</p>
+                {/* <DialogActions> */}
+                <Button onClick={() => {
+                    console.log(deleteRoomId)
+                    onDeleteRoom(deleteRoomId)
+                    setDeleteRoomId(null);
+                }}>Remove</Button>
+                <Button onClick={() => setDeleteRoomId(null)}>No</Button>
+                {/* </DialogActions> */}
+            </div>
+        );
+    }
+
+    return <>
+        {deleteRoomId && <div className="screen" onClick={() => setDeleteRoomId(null)}></div>}
+        <section className="rooms-list">
+            <header>
+                {/* <div></div> */}
+                <div className="creator" onClick={() => sortRoomsBycreatorName()}>Player</div>
+                <div className="player2" onClick={() => sortRoomsByPlayer2Name()}>Opponent</div>
+                <div className="time" onClick={() => sortRoomsByTime()}>Created</div>
+                {/* <div>Manage</div> */}
+                <div>Enter</div>
+            </header>
+            <main>
+                {rooms.map(room => {
+                    return <div className="room-row" key={room.id}>
 
                         <div className="creator flex align-center">
                             <img src={room.creator.photoURL} alt={room.creator.photoURL} />
@@ -107,7 +121,8 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
                             ? <button
                                 // disabled={room.onlineUsers.length > 0}
                                 className="trash flex justify-center align-center"
-                                onClick={handleDeleteModalOpen}
+                                // onClick={()=>onDeleteRoom(room.id)}
+                                onClick={() => setDeleteRoomId(room.id)}
                             >
                                 <DeleteForeverIcon />
                             </button>
@@ -116,19 +131,18 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
                         {/* <div className="online flex justify-center align-center">{room.onlineUsers.length}</div> */}
 
                         <a
-                            href={`/multiplayer/${room.id}`}
+                            href={`#/multiplayer/${room.id}`}
                             className="join flex align-center justify-center"
                         >
                             <JoinButtonInnerText room={room} user={user} />
                         </a>
-
+                        {/* <ConfirmDeleteModal roomId={room.id} handleDeleteModalClose={handleDeleteModalClose} openDeleteModal={openDeleteModal} /> */}
                     </div>
-                    <ConfirmDeleteModal roomId={room.id} handleDeleteModalClose={handleDeleteModalClose} openDeleteModal={openDeleteModal} />
-                </>
-            })}
-        </main>
+                })}
+            </main>
+            {deleteRoomId && <ConfirmDeleteModal />}
 
-    </section>
+        </section></>
 }
 
 export default RoomList
