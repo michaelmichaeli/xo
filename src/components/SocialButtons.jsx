@@ -16,9 +16,9 @@ export const SocialButtons = ({ roomId }) => {
 
     const shareLink = `http://localhost:3000/multiplayer/${roomId}`
     const title = 'Join my game of Tic Tac Toe'
-    return <div className="share flex column align-center">
+    return <div className="share flex column align-center between">
         <div className="title flex align-center">
-            <ShareIcon />
+            <ShareIcon fontSize="small"/>
             <p>Invite Your Friends</p>
         </div>
         <div className="content  flex align-center wrap">
@@ -28,7 +28,7 @@ export const SocialButtons = ({ roomId }) => {
                 className="share-button"
             >
                 <FacebookIcon
-                    size={"2rem"} // You can use rem value isntead of numbers
+                    size={"3rem"} // You can use rem value isntead of numbers
                     round
                 />
             </FacebookShareButton>
@@ -38,7 +38,7 @@ export const SocialButtons = ({ roomId }) => {
                 title={title}
                 className="share-button"
             >
-                <TwitterIcon size={"2rem"} round />
+                <TwitterIcon size={"3rem"} round />
             </TwitterShareButton>
 
             <WhatsappShareButton
@@ -47,7 +47,7 @@ export const SocialButtons = ({ roomId }) => {
                 separator=": "
                 className="share-button"
             >
-                <WhatsappIcon size={"2rem"} round />
+                <WhatsappIcon size={"3rem"} round />
             </WhatsappShareButton>
 
             <LinkedinShareButton
@@ -57,7 +57,7 @@ export const SocialButtons = ({ roomId }) => {
                 windowHeight={600}
                 className="share-button"
             >
-                <LinkedinIcon size={"2rem"} round />
+                <LinkedinIcon size={"3rem"} round />
             </LinkedinShareButton>
 
             <EmailShareButton
@@ -66,7 +66,7 @@ export const SocialButtons = ({ roomId }) => {
                 body="Check out this cool game: "
                 className="share-button"
             >
-                <EmailIcon size={"2rem"} round />
+                <EmailIcon size={"3rem"} round />
             </EmailShareButton>
         </div>
     </div>

@@ -13,6 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { db, auth } from '../services/firebaseService'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { Avatar } from "@material-ui/core";
 
 
 const Multiplayer = () => {
@@ -229,14 +230,14 @@ const Multiplayer = () => {
                 {(user.uid === player1.uid || (player2 && user.uid === player2.uid))
                     ? <div className={`restart flex  ${winner && "won"}`}
                         onClick={() => onRestart()}>
-                        <div className="text">
+                        {/* <div className="text">
                             <p>Restart</p>
-                        </div>
+                        </div> */}
                         <div className="symbol">
                             <ReplayIcon />
                         </div>
                     </div>
-                    : <div className="restart-dummy"></div>
+                    : <div className="restart-dummy-empty"></div>
                 }
             </header>
 
@@ -260,13 +261,13 @@ const Multiplayer = () => {
             <div className="bottom flex wrap justify-center">
                 <section className="online-players flex column align-center">
                     <div className="title flex align-center">
-                        <PublicIcon />
+                        <PublicIcon fontSize="small"/>
                         <p>Online Right Now</p>
                     </div>
                     <div className="content flex align-center wrap">
                         {onlineUsers.map(onlineUser => <div key={onlineUser.uid} className="player flex justify-center align-center">
-                            <img src={onlineUser.photoURL} alt={onlineUser.photoURL} />
-                            <p>{onlineUser.displayName[0]}</p>
+                            <Avatar src={onlineUser.photoURL} alt={onlineUser.photoURL} style={{ borderRadius: "4px" }}  />
+                            {/* <p>{onlineUser.displayName[0]}</p> */}
                         </div>)}
                     </div>
                 </section>

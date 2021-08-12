@@ -74,7 +74,7 @@ const NavBar = () => {
         <Button
             onClick={() => { history.push('/') }}
             className="logo">
-            <img src={logo} alt="" />
+            <Avatar src={logo} alt="" />
             <h2>Tic Tac Toe</h2>
         </Button>
         <ul className={`main-nav clean-list flex align-center justify-center ${isDrawerOpen ? 'menu-open' : ''}`}>

@@ -3,12 +3,18 @@ import { calculateWinner, bestMove } from "../services/aiService";
 
 import Board from "../components/Board"
 
-// import restart from "../assets/img/restart.svg";
+import ReplayIcon from '@material-ui/icons/Replay';
+import CurrentPlayerPreview from "../components/CurrentPlayerPreview";
+import { useEffect } from "react";
+
 
 const AiGame = () => {
 
     const [squares, setSquares] = useState(Array.from(Array(3), () => new Array(3).fill(null)))
+    // const [turnUser, setTurnUser] = useState(true)
     const [isLoading, setIsLoading] = useState(false);
+
+    // useEffect(()=>{},[isLoading])
 
     let winner = calculateWinner(squares);
 
@@ -33,11 +39,30 @@ const AiGame = () => {
     };
 
     const onRestart = () => {
-		setSquares(Array.from(Array(3), () => new Array(3).fill(null)));
-		winner = null
-	};
+        setSquares(Array.from(Array(3), () => new Array(3).fill(null)));
+        winner = null
+    };
 
     return <div className="ai flex align-center justify-center">
+        <header className="flex">
+            <CurrentPlayerPreview
+                currentPlayer={isLoading ? {displayName: "Ai"} : {displayName: "You"}}
+                currentSymbol={!isLoading ? "X" : "O"}
+                winner={winner}
+            />
+            <div className="middle flex column align-center justify-center">
+                <h2>Ai game</h2>
+            </div>
+            <div className={`restart ${winner && "won"}`}
+                onClick={() => onRestart()}>
+                {/* <div className="text">
+                            <p>Restart</p>
+                        </div> */}
+                <div className="symbol">
+                    <ReplayIcon />
+                </div>
+            </div>
+        </header>
         <Board
             winner={winner}
             squares={squares}
@@ -45,11 +70,12 @@ const AiGame = () => {
             isUserTurn={!isLoading}
             isAiThinking={isLoading}
         />
-        <button className={`restart  ${winner && "won"}`}
+
+        {/* <button className={`restart  ${winner && "won"}`}
             onClick={onRestart}>
-            {/* <img src={restart} alt="Restart" /> */}
+            {/* <img src={restart} alt="Restart" /> *
             <p>Restart</p>
-        </button>
+        </button> */}
     </div>;
 };
 

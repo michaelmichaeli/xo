@@ -46,20 +46,23 @@
 			align-self: flex-end;
 			// margin-top: 5px;
 			margin-left: auto;
-			// filter: grayscale(1);
-			width: 120px;
+			filter: grayscale(1);
+			// width: 120px;
 			height: 80px;
-			min-width: 120px;
+			// min-width: 120px;
 			cursor: default;
 			border-radius: 10px;
 			padding: 10px;
 			backdrop-filter: blur(10px);
-			background-color: rgba($clr4, 0.5);
+			background-color: rgba($clr4, 0.3);
+
+			opacity: 0.75;
 			// -moz-box-shadow: inset 20px 20px 50px #00000050;
 			// -webkit-box-shadow: inset 20px 20px 50px #00000050;
 			// box-shadow: inset 20px 20px 50px #00000050;
 			&.won {
 				// box-shadow: inset 20px 20px 50px #00000078;
+				opacity: 1;
 				filter: grayscale(0);
 				cursor: pointer;
 				.text {
@@ -71,7 +74,7 @@
 			.symbol {
 				position: relative;
 				height: 100%;
-				width: 50%;
+				// width: 50%;
 				svg {
 					fill: $clr3;
 					width: 100%;
@@ -127,15 +130,19 @@
 			// .player:not(:last-child) {
 			// 	margin-right: 10px;
 			// }
-			svg {
-				margin: 5px;
+			.title {
+
+				svg {
+					margin: 5px;
+				}
 			}
 			.player {
+				font-size: 120%;
 				margin: 5px;
 				img {
-					width: 24px;
-					border-radius: 50%;
-					margin-right: 3px;
+					// width: 24px;
+					// border-radius: 50%;
+					// margin-right: 3px;
 				}
 			}
 		}

@@ -15,17 +15,19 @@
 		max-width: 100%;
 		min-width: 288px;
 		font-size: 80%;
-		svg {
-			margin: 5px;
+		title {
+			> svg {
+				margin: 5px;
+			}
 		}
 
 		button {
-			margin: 0 5px;
+			margin: 5px;
 			// filter: grayscale(0.9);
 			// transition: 0.1s;
 			svg {
-				width: 24px;
-				height: 24px;
+				width: 40px;
+				height: 40px;
 			}
 		}
 	}

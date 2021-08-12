@@ -10,6 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { useState } from "react";
 import { useEffect } from "react";
+import { Avatar } from "@material-ui/core";
 // import ConfirmDeleteModal from './ConfirmDeleteModal'
 
 const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
@@ -63,11 +64,12 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
     const JoinButtonInnerText = ({ room, user }) => {
         const { player1, player2, turnUser } = room.game
         const player1TurnTxt = turnUser.uid === player1.uid ? 'Your Turn' : 'Opponents turn'
-        if (player1.uid === user.uid) return <><GamesIcon /><p>{player1TurnTxt}</p></>
+        if (player1.uid === user.uid && player2) return <><GamesIcon /><p>{player1TurnTxt}</p></>
+        if (player1.uid === user.uid && !player2) return <><GamesIcon /><p>Waiting Opponent</p></>
         if (!player2) return <><PersonAddIcon /><p>Join</p></>
         const player2TurnTxt = turnUser.uid === player2.uid ? 'Your Turn' : 'Opponents turn'
         if (player2.uid === user.uid) return <><GamesIcon /><p>{player2TurnTxt}</p></>
-        return <><VisibilityIcon /><p>Watch</p></>
+        return <><VisibilityIcon /><p>Watch Game</p></>
     }
 
     const ConfirmDeleteModal = () => {
@@ -102,12 +104,12 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
                     return <div className="room-row" key={room.id}>
 
                         <div className="creator flex align-center">
-                            <img src={room.creator.photoURL} alt={room.creator.photoURL} />
+                            <Avatar src={room.creator.photoURL} alt={room.creator.photoURL} style={{ width: 24, height: 24, borderRadius: "4px" }} />
                             {room.creator.uid === user.uid ? "You" : room.creator.displayName}
                         </div>
 
                         <div className="player2 flex align-center">
-                            {room.game.player2 && <img src={room.game.player2.photoURL} alt={room.game.player2.photoURL} />}
+                            {room.game.player2 && <Avatar src={room.game.player2.photoURL} alt={room.game.player2.photoURL} style={{ width: 24, height: 24, borderRadius: "4px" }} />}
                             {(room.game.player2 && room.game.player2.uid === user.uid) && "You"}
                             {(room.game.player2 && room.game.player2.uid !== user.uid) && room.game.player2.displayName}
                             {!room.game.player2 && "Waiting..."}

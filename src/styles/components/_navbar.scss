@@ -20,8 +20,8 @@
 			min-width: 170px;
 			text-transform: inherit;
 			img {
-				width: 30px;
-				margin-right: 5px;
+				// width: 30px;
+				// margin-right: 5px;
 			}
 			h2 {
 				font-size: 200%;
@@ -169,21 +169,34 @@
 		}
 	}
 }
+//notifications
 .MuiPaper-root {
 	ul {
 		background: $clr5;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 		white-space: nowrap;
 		font-size: 50%;
 		color: $clr1;
 		padding: 5px;
+		max-height: 250px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		&::-webkit-scrollbar {
+			width: 5px;
+		}
+		&::-webkit-scrollbar-track {
+			background: transparent;
+			// border-radius: 7px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: #bec4ca;
+			border-radius: 10px;
+		}
 		li {
 			white-space: nowrap;
-			
-			a {
-				color: $clr1;
-				font-size: 80%;
 
+			.MuiAvatar-root {
+				margin-right: 5px;
 			}
 		}
 	}

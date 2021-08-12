@@ -1,9 +1,10 @@
+import { Avatar } from '@material-ui/core';
 import moment from 'moment'
 const ChatMessage = ({ txt, createdAt, isSent, photoURL }) => {
     const messageClass = isSent ? 'sent' : 'received'
 
     return <div className={"wrap flex align-center " + messageClass}>
-        {!isSent && <img src={photoURL} alt="avatar" />}
+        {!isSent && <Avatar src={photoURL} alt="avatar" />}
         <div className={"message flex between align-center " + messageClass}>
             <p>{txt}</p>
         </div>
@@ -12,3 +13,4 @@ const ChatMessage = ({ txt, createdAt, isSent, photoURL }) => {
 };
 
 export default ChatMessage;
+

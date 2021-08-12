@@ -53,7 +53,7 @@ const Board = ({ squares, handleClick, winner, isUserTurn, winnerUser = null, is
         </div>
         <WinnerAnnouncement />
         {isUserTurn && !winner && <YourTurnAnnouncement />}
-        {isAiThinking && <div className="loading"><CircularProgress size="200px" color="inherit"/></div>}
+        {isAiThinking && <div className="loading"><CircularProgress size="50px" color="inherit"/></div>}
     </div>
 };
 
