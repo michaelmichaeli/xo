@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Square from "./Square";
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-
 import x from "../assets/img/x.svg";
 import o from "../assets/img/o.svg";
-
 
 const Board = ({ squares, handleClick, winner, isUserTurn, winnerUser = null, isAiThinking = null }) => {
     const [winUser, setWinUser] = useState(null)

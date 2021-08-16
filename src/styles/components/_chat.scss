@@ -19,13 +19,21 @@ $font: "Lato";
 	// box-shadow: 0 0 10px rgba($clr1, 0.5);
 	background-color: $clr4;
 
-
+	transition: transform 0.15s ease-out;
+	&.hide {
+		transform: translate(50%,calc(100% - 53px));
+		// max-height: 32px;
+		// height: 32px;
+	}
 	@include for-wide-layout {
 		right: 80px;
 		transform: translateX(0);
 		// main {
 		// 	min-height: 360px;
 		// }
+		&.hide {
+			transform: translate(0,calc(100% - 53px));
+		}
 	}
 	.header {
 		cursor: pointer;
@@ -46,6 +54,10 @@ $font: "Lato";
 			&.upsidedown {
 				transform: rotate(180deg);
 			}
+		}
+		img {
+			margin: 5px;
+			width: 30px;
 		}
 	}
 	main {
@@ -172,4 +184,7 @@ $font: "Lato";
 			background-color: $clr4;
 		}
 	}
+	
+	// overflow: hidden;
+
 }

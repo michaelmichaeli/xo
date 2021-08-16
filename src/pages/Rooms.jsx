@@ -12,6 +12,7 @@ import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useHistory } from 'react-router-dom';
 import { Avatar } from '@material-ui/core';
+import Robot from '../assets/img/robot.svg'
 
 const Rooms = () => {
     let history = useHistory();
@@ -94,9 +95,9 @@ const Rooms = () => {
 
     if (!user && !isUserLoading) return <Login />
 
-    return <section className="rooms-container home-page flex column align-center justify-center">
-        <header>
-            <Avatar className="user-photo" src={user.photoURL} alt={user.photoURL} style={{ width: 94, height: 94 }} />
+    return <section className="rooms-container flex column align-center">
+        <header className="flex align-center">
+            <Avatar className="user-photo" src={user.photoURL} alt={user.photoURL} style={{ width: 64, height: 64 }} />
             <h2 className="user-name">{user.displayName}</h2>
         </header>
 
@@ -119,6 +120,7 @@ const Rooms = () => {
                 onClick={onCreatNewRoom}
             ><GroupAddIcon />Create New Room</button>
         </div>
+    <img src={Robot} className="robot" />
     </section>
 }
 export default Rooms;

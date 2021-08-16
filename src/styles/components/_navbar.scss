@@ -1,45 +1,52 @@
 .nav-bar-wrap {
 	width: 100%;
-	background-image: linear-gradient(rgba($clr4, 1), transparent);
+	// background-image: linear-gradient(rgba($clr4, 1), transparent);
 	.nav-bar {
+		max-width: 1070px;
 		white-space: nowrap;
 		z-index: 99;
-		width: 68vw;
-		max-width: 100%;
+		// width: 68vw;
+		// max-width: 98%;
 		margin: 0 auto;
+		padding: 0 5px;
 		button.logo {
 			text-decoration: none;
 			display: flex;
 			align-items: center;
 			min-width: 160px;
 			// border-radius: 5px;
-			border-radius: 10px;
+			border-radius: 1000px;
 			height: 50px;
-			padding: 8px;
+			padding: 8px 8px 8px 0;
 			margin: 10px 10px 10px 0;
 			min-width: 170px;
 			text-transform: inherit;
-			img {
-				// width: 30px;
+			img,
+			svg {
+				transform: rotate(16deg);
+				height: 45px;
 				// margin-right: 5px;
 			}
 			h2 {
 				font-size: 200%;
 				margin: 0;
+				font-family: caveat;
 			}
 		}
 		> ul {
 			margin: 0 0 0 auto;
 			font-size: 80%;
 			> li {
-				margin: 5px;
+				margin: 0 1px;
 				&:nth-child(1) {
 					display: none;
 				}
 				& svg {
-					margin-right: 5px;
+					margin-right: 4px;
 				}
 				> button {
+					padding: 15px 20px;
+					border-radius: 1000px;
 					color: $clr6;
 					height: 50px;
 					&:hover {
@@ -89,7 +96,7 @@
 			}
 
 			.nav-icon {
-				margin: 0 0 0 auto;
+				margin: 0 5px 0 auto;
 				width: 35px;
 				height: 45px;
 				position: relative;

@@ -6,7 +6,8 @@ import Board from "../components/Board"
 import ReplayIcon from '@material-ui/icons/Replay';
 import CurrentPlayerPreview from "../components/CurrentPlayerPreview";
 import { useEffect } from "react";
-
+import OldComputer from '../assets/img/oldcomputer.svg'
+import Robot2 from '../assets/img/robot2.svg'
 
 const AiGame = () => {
 
@@ -69,6 +70,7 @@ const AiGame = () => {
             handleClick={handleClick}
             isUserTurn={!isLoading}
             isAiThinking={isLoading}
+            winnerUser={() => {return { displayName: "Ai" } }}
         />
 
         {/* <button className={`restart  ${winner && "won"}`}
@@ -76,6 +78,7 @@ const AiGame = () => {
             {/* <img src={restart} alt="Restart" /> *
             <p>Restart</p>
         </button> */}
+        <img className="robot2" src={Robot2} alt="" />
     </div>;
 };
 

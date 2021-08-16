@@ -1,49 +1,82 @@
 .home-page {
 	// text-shadow: 0px 0px 5px $clr1;
-	>main {
-		// width: 90%;
-		
-		backdrop-filter: blur(10px); 
-		background-color: rgba($clr4, 0.2);
-		border-radius: 10px;
-		width: $width;
-		max-width: 450px;
-		margin: 20px;
-		padding: 20px;
-		p {
-			width: 60%;
-			margin: 10px;
+	> section.hero {
+		width: 95%;
+		// backdrop-filter: blur(10px);
+		// background-color: rgba($clr4, 0.2);
+		// border-radius: 10px;
+		// width: $width;
+		// max-width: 450px;
+		// margin: 20px;
+		// padding: 20px;
+		// width: 100%;
+		// overflow: hidden;
+		.hero-img {
+			width: 50%;
+			svg,
+			img {
+				width: 100%;
+			}
+			@include for-mobile-layout-width {
+				width: 80%;
+			}
 		}
-		section.menu {
-			width: 100%;
-			a,
-			button {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				text-shadow: none;
-				margin: 10px;
-				cursor: pointer;
-				text-decoration: none;
-				padding: 20px;
-				background-color: rgba($clr3, 1);
-				border-radius: 10px;
-				// border: 2px solid $clr5;
-				font-weight: bolder;
-				font-size: 100%;
-				line-height: 100%;
-				// box-shadow: 0px 0px 5px $clr1;
-				&:hover {
-					background-color: $clr2;
+		.content {
+			margin-bottom: 70px;
+			width: 50%;
+			// padding: 0 0 0 20px;
+			h1 {
+				margin-bottom: 10px;
+				font-size: 2.5em;
+				// text-align: start;
+				line-height: 1.05;
+			}
+			section.menu {
+				width: 100%;
+				a,
+				button {
+					white-space: nowrap;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					text-shadow: none;
+					margin: 10px 10px 0 0;
+					cursor: pointer;
+					text-decoration: none;
+					padding: 15px 20px;
+					background-color: $clr3;
+					border-radius: 1000px;
+					// border: 2px solid $clr5;
+					font-weight: bolder;
+					font-size: 100%;
+					line-height: 100%;
+					// padding: 0 1.5em;
+					// min-width: 0;
+					font-size: 0.875em;
+					// box-shadow: 0px 0px 5px $clr1;
+					&:hover {
+						background-color: $clr2;
+					}
+					svg {
+						margin-right: 5px;
+					}
 				}
-				svg {
-					margin-right: 5px;
+				// @include for-mobile-layout-width {
+					align-items: center;
+					justify-content: center;
+				// }
+			}
+			@include for-mobile-layout-width {
+				width: 90%;
+				// align-items: center;
+				h1 {
+					text-align: center;
+					font-size: 2rem;
 				}
 			}
 		}
 		@include for-mobile-layout-width {
-			width: 95%;
+			width: 100%;
 		}
 	}
-	
 }

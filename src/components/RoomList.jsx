@@ -4,22 +4,23 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import { useState } from "react";
 import { useEffect } from "react";
 import { Avatar } from "@material-ui/core";
-// import ConfirmDeleteModal from './ConfirmDeleteModal'
 
 const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
+    const [orderBy, setOrderBy] = useState({ key: 'created', descending: false })
+    // useEffect(() => {
+    //     console.log('orderBy', orderBy);
+    // }, [orderBy])
 
     const [rooms, setRooms] = useState(localRooms)  // For Sorting
     useEffect(() => {
         setRooms(localRooms);
     }, [localRooms])
     const sortRoomsBycreatorName = () => {
+        setOrderBy(state => state.key === "player" ? { ...state, descending: !state.descending } : { key: "player", descending: true })
+
         const roomsCopy = [...rooms]
         roomsCopy.sort(function (a, b) {
             var nameA = a.creator.displayName.toUpperCase(); // to ignore upper and lowercase
@@ -34,6 +35,8 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
         setRooms(roomsCopy)
     }
     const sortRoomsByPlayer2Name = () => {
+        setOrderBy(state => state.key === "opponent" ? { ...state, descending: !state.descending } : { key: "opponent", descending: true })
+
         const roomsCopy = [...rooms]
         roomsCopy.sort(function (a, b) {
             const nameA = a.game.player2?.displayName.toUpperCase(); // to ignore upper and lowercase
@@ -49,6 +52,8 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
         setRooms(roomsCopy)
     }
     const sortRoomsByTime = () => {
+        setOrderBy(state => state.key === "created" ? { ...state, descending: !state.descending } : { key: "created", descending: false })
+
         let roomsCopy = [...rooms]
         roomsCopy.sort(function (a, b) {
             return a.createdAt.seconds - b.createdAt.seconds;
@@ -76,14 +81,12 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
         return (
             <div className="delete-modal">
                 <p>Are your sure you want to remove this room permanently?</p>
-                {/* <DialogActions> */}
                 <Button onClick={() => {
                     console.log(deleteRoomId)
                     onDeleteRoom(deleteRoomId)
                     setDeleteRoomId(null);
                 }}>Remove</Button>
                 <Button onClick={() => setDeleteRoomId(null)}>No</Button>
-                {/* </DialogActions> */}
             </div>
         );
     }
@@ -92,11 +95,30 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
         {deleteRoomId && <div className="screen" onClick={() => setDeleteRoomId(null)}></div>}
         <section className="rooms-list">
             <header>
-                {/* <div></div> */}
-                <div className="creator" onClick={() => sortRoomsBycreatorName()}>Player</div>
-                <div className="player2" onClick={() => sortRoomsByPlayer2Name()}>Opponent</div>
-                <div className="time" onClick={() => sortRoomsByTime()}>Created</div>
-                {/* <div>Manage</div> */}
+                <div className="creator flex align-center" onClick={() => sortRoomsBycreatorName()}>
+                    Player
+                    {orderBy.key === "player" && <svg
+                        className={`arrow ${orderBy.descending && "upsidedown"}`}
+                        width="10px" height="10px" viewBox="0 0 18 10">
+                        <path fill="white" d="M1 2.414A1 1 0 012.414 1L8.293 6.88a1 1 0 001.414 0L15.586 1A1 1 0 0117 2.414L9.707 9.707a1 1 0 01-1.414 0L1 2.414z"></path>
+                    </svg>}
+                </div>
+                <div className="player2 flex align-center" onClick={() => sortRoomsByPlayer2Name()}>
+                    Opponent
+                    {orderBy.key === "opponent" && <svg
+                        className={`arrow ${orderBy.descending && "upsidedown"}`}
+                        width="10px" height="10px" viewBox="0 0 18 10">
+                        <path fill="white" d="M1 2.414A1 1 0 012.414 1L8.293 6.88a1 1 0 001.414 0L15.586 1A1 1 0 0117 2.414L9.707 9.707a1 1 0 01-1.414 0L1 2.414z"></path>
+                    </svg>}
+                </div>
+                <div className="time flex align-center" onClick={() => sortRoomsByTime()}>
+                    Created
+                    {orderBy.key === "created" && <svg
+                        className={`arrow ${!orderBy.descending && "upsidedown"}`}
+                        width="10px" height="10px" viewBox="0 0 18 10">
+                        <path fill="white" d="M1 2.414A1 1 0 012.414 1L8.293 6.88a1 1 0 001.414 0L15.586 1A1 1 0 0117 2.414L9.707 9.707a1 1 0 01-1.414 0L1 2.414z"></path>
+                    </svg>}
+                </div>
                 <div>Enter</div>
             </header>
             <main>
@@ -138,7 +160,6 @@ const RoomList = ({ localRooms, goToRoom, user, onDeleteRoom }) => {
                         >
                             <JoinButtonInnerText room={room} user={user} />
                         </a>
-                        {/* <ConfirmDeleteModal roomId={room.id} handleDeleteModalClose={handleDeleteModalClose} openDeleteModal={openDeleteModal} /> */}
                     </div>
                 })}
             </main>

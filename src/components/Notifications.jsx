@@ -90,7 +90,7 @@ const Notifications = ({ user, setIsDrawerOpen }) => {
                             handleClose()
                         }}
                     >
-                        <Avatar src={opponent.photoURL} alt={opponent.photoURL} />
+                        <Avatar src={opponent.photoURL} alt={opponent.photoURL} style={{ width: 24, height: 24, borderRadius: "4px" }}/>
                         {opponent.displayName}
                         {/* </Button> */}
                         {/* <a href={`#/multiplayer/${room.id}`}>{opponent.displayName}</a> */}
