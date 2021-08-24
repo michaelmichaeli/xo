@@ -1,28 +1,32 @@
 {
   "files": {
-    "main.css": "/xo/static/css/main.690d58b7.chunk.css",
-    "main.js": "/xo/static/js/main.5ec82853.chunk.js",
-    "main.js.map": "/xo/static/js/main.5ec82853.chunk.js.map",
+    "main.css": "/xo/static/css/main.e0e43cb3.chunk.css",
+    "main.js": "/xo/static/js/main.2a6ddf2a.chunk.js",
+    "main.js.map": "/xo/static/js/main.2a6ddf2a.chunk.js.map",
     "runtime-main.js": "/xo/static/js/runtime-main.61ef5ec0.js",
     "runtime-main.js.map": "/xo/static/js/runtime-main.61ef5ec0.js.map",
-    "static/js/2.89ccd58c.chunk.js": "/xo/static/js/2.89ccd58c.chunk.js",
-    "static/js/2.89ccd58c.chunk.js.map": "/xo/static/js/2.89ccd58c.chunk.js.map",
+    "static/js/2.52a03c53.chunk.js": "/xo/static/js/2.52a03c53.chunk.js",
+    "static/js/2.52a03c53.chunk.js.map": "/xo/static/js/2.52a03c53.chunk.js.map",
     "index.html": "/xo/index.html",
-    "static/css/main.690d58b7.chunk.css.map": "/xo/static/css/main.690d58b7.chunk.css.map",
-    "static/js/2.89ccd58c.chunk.js.LICENSE.txt": "/xo/static/js/2.89ccd58c.chunk.js.LICENSE.txt",
+    "static/css/main.e0e43cb3.chunk.css.map": "/xo/static/css/main.e0e43cb3.chunk.css.map",
+    "static/js/2.52a03c53.chunk.js.LICENSE.txt": "/xo/static/js/2.52a03c53.chunk.js.LICENSE.txt",
     "static/media/global.scss": "/xo/static/media/NunitoSans-Regular.87d92665.ttf",
     "static/media/chaticon.29cd576a.svg": "/xo/static/media/chaticon.29cd576a.svg",
+    "static/media/code.61c78a31.svg": "/xo/static/media/code.61c78a31.svg",
+    "static/media/description.0dfd870f.svg": "/xo/static/media/description.0dfd870f.svg",
     "static/media/heroimage.6d217b44.svg": "/xo/static/media/heroimage.6d217b44.svg",
     "static/media/logo.33f6a5da.svg": "/xo/static/media/logo.33f6a5da.svg",
+    "static/media/notifications.ade5b261.svg": "/xo/static/media/notifications.ade5b261.svg",
     "static/media/o.f06e24eb.svg": "/xo/static/media/o.f06e24eb.svg",
     "static/media/robot.07611293.svg": "/xo/static/media/robot.07611293.svg",
     "static/media/robot2.9d668d35.svg": "/xo/static/media/robot2.9d668d35.svg",
+    "static/media/rocket.607ed6c2.svg": "/xo/static/media/rocket.607ed6c2.svg",
     "static/media/x.0f781a89.svg": "/xo/static/media/x.0f781a89.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.61ef5ec0.js",
-    "static/js/2.89ccd58c.chunk.js",
-    "static/css/main.690d58b7.chunk.css",
-    "static/js/main.5ec82853.chunk.js"
+    "static/js/2.52a03c53.chunk.js",
+    "static/css/main.e0e43cb3.chunk.css",
+    "static/js/main.2a6ddf2a.chunk.js"
   ]
 }
